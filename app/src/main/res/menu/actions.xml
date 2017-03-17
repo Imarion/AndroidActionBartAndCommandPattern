@@ -7,7 +7,7 @@
         app:showAsAction="always"
         android:title="Copy"/>
     <item
-        android:id="@+id/reset"
+        android:id="@+id/Paste"
         android:icon="@android:drawable/btn_plus"
         app:showAsAction="always"
         android:title="Paste"/>
