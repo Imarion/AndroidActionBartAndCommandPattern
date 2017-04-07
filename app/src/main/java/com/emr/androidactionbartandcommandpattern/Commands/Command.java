@@ -5,5 +5,5 @@ package com.emr.androidactionbartandcommandpattern.Commands;
  */
 
 public interface Command {
-    public void execute();
+    void execute();
 }

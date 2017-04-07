@@ -1,7 +1,7 @@
 package com.emr.androidactionbartandcommandpattern.Commands;
 
 
-import com.emr.androidactionbartandcommandpattern.MainActivity;
+import com.emr.androidactionbartandcommandpattern.MyEditText;
 
 /**
  * Created by emr on 2017/04/07.
@@ -9,14 +9,14 @@ import com.emr.androidactionbartandcommandpattern.MainActivity;
 
 public class CopyCommand implements Command {
 
-    private MainActivity mMa;
+    private MyEditText mEditText;
 
-    public CopyCommand(MainActivity ma) {
-        mMa = ma;
+    public CopyCommand(MyEditText me) {
+        mEditText = me;
     }
 
     @Override
     public void execute() {
-        mMa.copy();
+        mEditText.copy();
     }
 }
