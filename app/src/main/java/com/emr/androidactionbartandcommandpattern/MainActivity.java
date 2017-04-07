@@ -7,17 +7,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-enum tvwidget {
-    tv1,
-    tv2
-}
+import com.emr.androidactionbartandcommandpattern.Commands.CopyCommand;
+import com.emr.androidactionbartandcommandpattern.Commands.PasteCommand;
 
 public class MainActivity extends    AppCompatActivity
                           implements View.OnFocusChangeListener
 {
 
-    private TextView tv1, tv2;
-    private tvwidget mTvwidget;
+    private TextView tv1, tv2, curTv;
     private String   clipboard;
 
     @Override
@@ -44,24 +41,12 @@ public class MainActivity extends    AppCompatActivity
 
         switch (item.getItemId()) {
             case R.id.Copy:
-                switch (mTvwidget) {
-                    case tv1:
-                        clipboard = tv1.getText().toString();
-                        break;
-                    case tv2:
-                        clipboard = tv2.getText().toString();
-                        break;
-                }
+                CopyCommand cc = new CopyCommand(this);
+                cc.execute();
                 break;
             case R.id.Paste:
-                switch (mTvwidget) {
-                    case tv1:
-                        tv1.setText(clipboard);
-                        break;
-                    case tv2:
-                        tv2.setText(clipboard);
-                        break;
-                }
+                PasteCommand pc = new PasteCommand(this);
+                pc.execute();
                 break;
         }
 
@@ -72,12 +57,22 @@ public class MainActivity extends    AppCompatActivity
     public void onFocusChange(View view, boolean b) {
         switch (view.getId()) {
             case R.id.editText:
-                mTvwidget = tvwidget.tv1;
+                curTv = tv1;
                 break;
             case R.id.editText2:
-                mTvwidget = tvwidget.tv2;
+                curTv = tv2;
                 break;
 
         }
+    }
+
+    public void paste()
+    {
+        curTv.setText(clipboard);
+    }
+
+    public void copy()
+    {
+        clipboard = curTv.getText().toString();
     }
 }

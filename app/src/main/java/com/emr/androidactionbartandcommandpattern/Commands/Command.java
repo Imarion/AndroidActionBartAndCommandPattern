@@ -1,4 +1,4 @@
-package com.emr.androidactionbartandcommandpattern;
+package com.emr.androidactionbartandcommandpattern.Commands;
 
 /**
  * Created by EMR on 2017/03/17.
